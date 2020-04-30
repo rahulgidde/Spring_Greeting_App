@@ -1,20 +1,20 @@
 package com.bridgelabz.greetingapp.dto;
 
 public class Greeting {
-    private String name;
+    private String format;
     private long count;
 
     public Greeting(long incrementAndGet, String format) {
         this.count = incrementAndGet;
-        this.name = format;
+        this.format = format;
     }
 
-    public String getName() {
-        return name;
+    public String getFormat() {
+        return format;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFormat(String name) {
+        this.format = name;
     }
 
     public long getCount() {

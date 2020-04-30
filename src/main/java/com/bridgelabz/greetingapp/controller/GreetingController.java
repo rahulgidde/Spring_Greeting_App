@@ -24,10 +24,15 @@ public class GreetingController {
                 String.format(template, name));
     }
 
-    @RequestMapping("/post")
+    @PostMapping("/post")
     public Greeting postGreeting(@RequestBody User user) {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, user.getFirstName() + " " + user.getLastName()));
+    }
+
+    @PutMapping("/put/{firstName}")
+    public Greeting putGreeting(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, firstName + " " + lastName));
     }
 }
 
