@@ -1,6 +1,7 @@
 package com.bridgelabz.greetingapp.controller;
 
 import com.bridgelabz.greetingapp.dto.Greeting;
+import com.bridgelabz.greetingapp.dto.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -22,4 +23,11 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
     }
+
+    @RequestMapping("/post")
+    public Greeting postGreeting(@RequestBody User user) {
+        return new Greeting(counter.incrementAndGet(),
+                String.format(template, user.getFirstName() + " " + user.getLastName()));
+    }
 }
+
