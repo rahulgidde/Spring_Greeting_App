@@ -2,6 +2,8 @@ package com.bridgelabz.greetingapp.controller;
 
 import com.bridgelabz.greetingapp.dto.Greeting;
 import com.bridgelabz.greetingapp.dto.User;
+import com.bridgelabz.greetingapp.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -11,6 +13,8 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
+    @Autowired
+    GreetingService service;
 
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "world") String name) {
@@ -33,6 +37,11 @@ public class GreetingController {
     @PutMapping("/put/{firstName}")
     public Greeting putGreeting(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
         return new Greeting(counter.incrementAndGet(), String.format(template, firstName + " " + lastName));
+    }
+
+    @RequestMapping("/message")
+    public String getMessage() {
+        return service.getGreeting();
     }
 }
 
