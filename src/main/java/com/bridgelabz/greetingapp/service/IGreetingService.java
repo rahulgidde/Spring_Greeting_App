@@ -1,5 +1,5 @@
 package com.bridgelabz.greetingapp.service;
 
 public interface IGreetingService {
-    public String getGreeting();
+    public String getGreeting(String name);
 }

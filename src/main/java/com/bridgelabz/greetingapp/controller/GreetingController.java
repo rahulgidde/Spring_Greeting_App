@@ -39,9 +39,9 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(), String.format(template, firstName + " " + lastName));
     }
 
-    @RequestMapping("/message")
-    public String getMessage() {
-        return service.getGreeting();
+    @GetMapping("/name")
+    public String getMessage(@RequestParam(value = "firstName") String firstName){
+        return service.getGreeting(firstName);
     }
 }
 
