@@ -29,6 +29,7 @@ public class GreetingService implements IGreetingService {
 
     @Override
     public Object getUserById(Long id) {
+
         return repository.findById(id);
     }
 }
