@@ -43,5 +43,10 @@ public class GreetingController {
     public UserDto getMessage(@RequestBody UserDto userDto) {
         return service.getGreeting(userDto);
     }
+
+    @GetMapping("/{id}")
+    public Object getUserData(@PathVariable(value = "id") Long id) {
+        return service.getUserById(id);
+    }
 }
 
