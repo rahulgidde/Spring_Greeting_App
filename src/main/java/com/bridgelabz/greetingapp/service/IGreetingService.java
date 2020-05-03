@@ -1,5 +1,7 @@
 package com.bridgelabz.greetingapp.service;
 
+import com.bridgelabz.greetingapp.dto.UserDto;
+
 public interface IGreetingService {
-    public String getGreeting(String name);
+    public UserDto getGreeting(UserDto userDto);
 }

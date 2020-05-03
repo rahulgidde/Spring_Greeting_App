@@ -1,7 +1,7 @@
 package com.bridgelabz.greetingapp.controller;
 
-import com.bridgelabz.greetingapp.dto.Greeting;
-import com.bridgelabz.greetingapp.dto.User;
+import com.bridgelabz.greetingapp.dto.GreetingDto;
+import com.bridgelabz.greetingapp.dto.UserDto;
 import com.bridgelabz.greetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,31 +17,31 @@ public class GreetingController {
     GreetingService service;
 
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "world") String name) {
-        return new Greeting(counter.incrementAndGet(),
+    public GreetingDto greeting(@RequestParam(value = "name", defaultValue = "world") String name) {
+        return new GreetingDto(counter.incrementAndGet(),
                 String.format(template, name));
     }
 
     @RequestMapping(value = "/query", method = RequestMethod.GET)
-    public Greeting getGreeting(@RequestParam(value = "name", defaultValue = "world") String name) {
-        return new Greeting(counter.incrementAndGet(),
+    public GreetingDto getGreeting(@RequestParam(value = "name", defaultValue = "world") String name) {
+        return new GreetingDto(counter.incrementAndGet(),
                 String.format(template, name));
     }
 
     @PostMapping("/post")
-    public Greeting postGreeting(@RequestBody User user) {
-        return new Greeting(counter.incrementAndGet(),
+    public GreetingDto postGreeting(@RequestBody UserDto user) {
+        return new GreetingDto(counter.incrementAndGet(),
                 String.format(template, user.getFirstName() + " " + user.getLastName()));
     }
 
     @PutMapping("/put/{firstName}")
-    public Greeting putGreeting(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, firstName + " " + lastName));
+    public GreetingDto putGreeting(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
+        return new GreetingDto(counter.incrementAndGet(), String.format(template, firstName + " " + lastName));
     }
 
-    @GetMapping("/name")
-    public String getMessage(@RequestParam(value = "firstName") String firstName){
-        return service.getGreeting(firstName);
+    @PostMapping("/name")
+    public UserDto getMessage(@RequestBody UserDto userDto){
+        return service.getGreeting(userDto);
     }
 }
 
