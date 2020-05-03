@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 @RequestMapping("/greetings")
 public class GreetingController {
-    private static final String template = "Hello, %s!";
+    private static final String template = "Hello %s!";
     private final AtomicLong counter = new AtomicLong();
     @Autowired
     GreetingService service;
@@ -39,8 +39,8 @@ public class GreetingController {
         return new GreetingDto(counter.incrementAndGet(), String.format(template, firstName + " " + lastName));
     }
 
-    @PostMapping("/name")
-    public UserDto getMessage(@RequestBody UserDto userDto){
+    @PostMapping("/message")
+    public UserDto getMessage(@RequestBody UserDto userDto) {
         return service.getGreeting(userDto);
     }
 }

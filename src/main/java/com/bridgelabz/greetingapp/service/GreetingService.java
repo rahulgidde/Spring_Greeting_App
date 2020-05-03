@@ -17,7 +17,7 @@ public class GreetingService implements IGreetingService {
     @Autowired
     UserRepository repository;
 
-    String template = "Hello World,%s";
+    String template = "Hello World %s";
 
     @Override
     public UserDto getGreeting(UserDto userDto) {
