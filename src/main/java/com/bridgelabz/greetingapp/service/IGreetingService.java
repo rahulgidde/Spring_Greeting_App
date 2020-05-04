@@ -14,4 +14,6 @@ public interface IGreetingService {
     public List<User> getUserList();
 
     public User getUserUpdate(Long id);
+
+    public List<User> getUser(Long id);
 }

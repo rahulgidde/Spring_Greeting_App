@@ -60,5 +60,10 @@ public class GreetingController {
     public User getUserUpdate(@PathVariable(value = "id") Long id) {
         return service.getUserUpdate(id);
     }
+
+    @DeleteMapping("/{id}")
+    public List<User> deleteUser(@PathVariable(value = "id") Long id) {
+        return service.getUser(id);
+    }
 }
 

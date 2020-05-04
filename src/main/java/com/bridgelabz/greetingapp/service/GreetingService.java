@@ -44,4 +44,9 @@ public class GreetingService implements IGreetingService {
         user.setGreeting("Updated");
         return repository.save(user);
     }
+
+    public List<User> getUser(Long id) {
+        repository.deleteById(id);
+        return repository.findAll();
+    }
 }
