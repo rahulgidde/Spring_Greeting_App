@@ -55,5 +55,10 @@ public class GreetingController {
     public List<User> getUserData() {
         return service.getUserList();
     }
+
+    @PutMapping("/{id}")
+    public User getUserUpdate(@PathVariable(value = "id") Long id) {
+        return service.getUserUpdate(id);
+    }
 }
 
